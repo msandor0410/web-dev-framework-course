@@ -93,7 +93,7 @@ export class SurveyFormComponent implements OnInit {
             id: surveyId,
             title: this.surveyForm.value.title,
             description: this.surveyForm.value.description,
-            creatorId: fullName,
+            creatorId: user.uid,
             creatorName: fullName,
             questionIds: this.questions.map(q => q.id),
             tags: this.tags

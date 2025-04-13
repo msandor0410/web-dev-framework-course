@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -7,6 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { Auth, sendEmailVerification } from '@angular/fire/auth';
+import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,17 +20,21 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    RouterModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  unverifiedUser: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private auth: Auth,
     private router: Router
   ) {}
 
@@ -41,13 +48,26 @@ export class LoginComponent {
   login(): void {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      this.authService.login(email, password)  // Bejelentkezés a szolgáltatás használatával
+      this.authService.login(email, password)
         .then(() => {
-          this.router.navigate(['/survey-list']);  // Bejelentkezés után átirányítás
+          this.unverifiedUser = false;
+          this.router.navigate(['/survey-list']);
         })
         .catch(error => {
-          alert(error.message);  // Hibakezelés
+          if (error.message.includes('megerősítve')) {
+            this.unverifiedUser = true;
+          }
+          alert(error.message);
         });
+    }
+  }
+
+  resendVerificationEmail(): void {
+    const user = this.auth.currentUser;
+    if (user && !user.emailVerified) {
+      sendEmailVerification(user).then(() => {
+        alert('📩 A megerősítő e-mail újra elküldve!');
+      });
     }
   }
 }

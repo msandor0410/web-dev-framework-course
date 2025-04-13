@@ -29,16 +29,18 @@ export class SurveyListComponent implements OnInit {
   ngOnInit(): void {
     this.surveys$ = this.surveyService.getSurveys().pipe(
       switchMap(surveys => {
-        const enrichedSurveys = surveys.map(survey =>
-          this.authService.getUserFullName(survey.creatorId).then(name => ({
+        const enrichedSurveys = surveys.map(survey => {
+          const creatorId = survey.creatorId || '';
+          return this.authService.getUserFullName(creatorId).then(name => ({
             ...survey,
-            creatorName: name
-          }))
-        );
+            creatorName: name || 'Ismeretlen'
+          }));
+        });
         return forkJoin(enrichedSurveys);
       })
     );
   }
+  
 
   onSurveySelected(survey: Survey): void {
     this.router.navigate(['/survey', survey.id]);

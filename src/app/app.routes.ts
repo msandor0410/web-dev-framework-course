@@ -19,5 +19,9 @@ export const routes: Routes = [
       import('./components/survey-detail/survey-detail.component').then(m => m.SurveyDetailComponent),
     canActivate: [authGuard]
   },
+  {
+    path: 'forgot-password',
+    loadComponent: () => import('./components/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent)
+  },  
   { path: '**', redirectTo: 'survey-list' }
 ];

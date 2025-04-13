@@ -1,57 +1,48 @@
 # ✅ KÉRDŐÍV SZERKESZTŐ ALKALMAZÁS (Survey Editor Application)
 
-Ez a projekt az **SZTE Webfejlesztési keretrendszerek** kurzus keretében készült, Angular alapú kérdőív szerkesztő alkalmazás. A projekt az első mérföldkő követelményeinek teljesítését célozza.
+Ez a projekt az **SZTE Webfejlesztési keretrendszerek** kurzus keretében készült, Angular alapú kérdőív szerkesztő alkalmazás. A projekt teljesíti az első mérföldkő követelményeit, továbbá opcionális biztonsági funkciókat is tartalmaz.
 
-## 🎯 Funkcionalitás (Első mérföldkő)
+## 🎯 Funkcionalitás (Első mérföldkő és bővítések)
 
-- ✔️ Regisztráció és bejelentkezés Firebase használatával
-- ✔️ Kérdőívek létrehozása cím, leírás, kérdések és címkék (tag-ek) megadásával
-- ✔️ Kérdések típusának kezelése (text, checkbox, radio)
-- ✔️ Kérdőívek listázása, saját kérdőívek szűrése
-- ✔️ Kérdőív részletes megtekintése
-- ✔️ Saját `Pipe`: teljes név rövidítése
-- ✔️ Szülő-gyermek komponens kommunikáció (`@Input`, `@Output`)
-- ✔️ Angular formok használata (Reactive Forms)
-- ✔️ Angular Material komponensek (10+)
+- ✔️ Regisztráció Firebase Auth használatával (email + jelszó, teljes név mentése)
+- ✔️ Kötelező e-mail megerősítés belépés előtt
+- ✔️ Bejelentkezés email és jelszó alapján
+- ✔️ E-mail megerősítés újraküldés lehetősége
+- ✔️ Elfelejtett jelszó visszaállítása (email alapján)
+- ✔️ Kérdőívek létrehozása (cím, leírás, kérdések, tag-ek)
+- ✔️ Kérdések külön kollekcióban mentve
+- ✔️ Kérdőívek listázása, saját szűrés Pipe segítségével
+- ✔️ Kérdőív részletes megtekintése (kérdésekkel együtt)
+- ✔️ Angular Material (15+ komponens használatban)
+- ✔️ Reactive Formok és validációk
+- ✔️ Saját `Pipe`: teljes név rövidítése (pl. „Mikó Sándor” → „M. Sándor”)
+- ✔️ @Input, @Output kommunikáció komponensek között
 
-## 🔧 Technológiák
+## 🔒 Biztonság és jogosultságkezelés
 
-- Angular 15+
-- Angular Material
-- Firebase (Auth, Firestore)
-- TypeScript
-- SCSS
+- 🔐 Firebase email-verifikáció beépítve
+- 🔐 Firestore szabályok: csak saját adatok írhatók, kérdőívek csak bejelentkezve olvashatók
+- 🔐 .gitignore fájlban minden érzékeny/épített/adatfájl kizárva
 
-## 🧱 Adatmodellek
+## 📁 Mappastruktúra (részlet)
+- `src/app/components/` – Komponensek (login, register, profile, survey-list, stb.)
+- `src/app/services/` – AuthService, SurveyService, QuestionService
+- `src/app/models/` – Adatmodellek (User, Survey, Question, Tag)
 
-- `User` – Felhasználó (név, email, UID)
-- `Survey` – Kérdőív
-- `Question` – Kérdés (külön kollekció)
-- `Tag` – Címke (egyszerű string listaként)
+## 🚀 Indítás fejlesztői módban
 
-## 📁 Projektstruktúra
-
-```
-src/
-├── app/
-│   ├── components/
-│   ├── models/
-│   ├── services/
-│   ├── pipes/
-│   └── app.routes.ts
-└── environments/
+```bash
+npm install
+ng serve
 ```
 
-## 🚀 Indítás lokálisan
+## 🏁 Build és deploy
 
-1. `npm install`
-2. `ng serve -o`
+```bash
+ng build --configuration production
+firebase deploy
+```
 
-## 📡 Hosting
+---
 
-Az alkalmazás a 2. mérföldkőre kerül publikálásra Firebase Hosting-ra.
-
-## 👨‍💻 Készítette
-
-Mikó Sándor (J9L8IC)  
-Kurzus: Webfejlesztési keretrendszerek, SZTE  
+> Készítette: Mikó Sándor – 2025. április

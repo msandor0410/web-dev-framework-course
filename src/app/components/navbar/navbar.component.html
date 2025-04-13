@@ -1,11 +1,22 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer mode="over" class="sidenav">
     <mat-nav-list>
+
       <a mat-list-item routerLink="/survey-list" routerLinkActive="active">Kérdőívek</a>
-      <a mat-list-item routerLink="/new-survey" routerLinkActive="active">Új kérdőív</a>
-      <a mat-list-item routerLink="/profile" routerLinkActive="active">Profil</a>
-      <a mat-list-item routerLink="/register" routerLinkActive="active">Regisztráció</a>
-      <a mat-list-item (click)="logout()">Kijelentkezés</a>
+
+      <ng-container *ngIf="(user$ | async) as user; else guestLinks">
+
+        <a mat-list-item routerLink="/new-survey" routerLinkActive="active">Új kérdőív</a>
+        <a mat-list-item routerLink="/profile" routerLinkActive="active">Profil</a>
+        <a mat-list-item (click)="logout()">Kijelentkezés</a>
+
+      </ng-container>
+
+      <ng-template #guestLinks>
+        <a mat-list-item routerLink="/login" routerLinkActive="active">Bejelentkezés</a>
+        <a mat-list-item routerLink="/register" routerLinkActive="active">Regisztráció</a>
+      </ng-template>
+
     </mat-nav-list>
   </mat-sidenav>
 

@@ -1,6 +1,8 @@
 <div class="auth-container">
   <mat-card class="auth-card">
-    <mat-card-title>Belépés</mat-card-title>
+    <mat-card-title class="mat-headline">Bejelentkezés</mat-card-title>
+
+    <!-- BEJELENTKEZÉSI ŰRLAP -->
     <form [formGroup]="loginForm" (ngSubmit)="login()">
 
       <mat-form-field appearance="outline" class="form-field">
@@ -22,9 +24,26 @@
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="full-width">
         Belépés
       </button>
+
+      <div *ngIf="unverifiedUser" class="email-warning">
+        <mat-divider class="my-divider"></mat-divider>
+        <p class="warning-text">📭 Az e-mail cím még nincs megerősítve.</p>
+        <button mat-stroked-button color="accent" (click)="resendVerificationEmail()">
+          🔁 Küldd újra a megerősítő e-mailt
+        </button>
+      </div>
+
     </form>
+
+    <!-- JELSZÓ-VISSZAÁLLÍTÁS GOMB KÜLÖN -->
+    <div class="forgot-link">
+      <button mat-stroked-button color="accent" routerLink="/forgot-password" class="full-width">
+        🔑 Elfelejtetted a jelszavad?
+      </button>
+    </div>
+
   </mat-card>
 </div>

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { CommonModule } from '@angular/common';  // A CommonModule importálása
-import { ReactiveFormsModule } from '@angular/forms';  // A ReactiveFormsModule importálása
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,13 +35,12 @@ export class RegisterComponent {
         fullName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required]]
+        confirmPassword: ['', Validators.required]
       },
       { validators: this.passwordMatchValidator }
     );
   }
 
-  // Jelszó megerősítés validátor
   passwordMatchValidator(form: FormGroup): { [key: string]: boolean } | null {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
@@ -54,12 +52,13 @@ export class RegisterComponent {
   register(): void {
     if (this.registerForm.valid) {
       const { email, password, fullName } = this.registerForm.value;
-      this.authService.register(email, password, fullName)  // Regisztráció a szolgáltatás használatával
+      this.authService.register(email, password, fullName)
         .then(() => {
-          this.router.navigate(['/survey-list']);  // Regisztráció után átirányítás
+          alert('📩 Regisztráció sikeres! Kérlek, erősítsd meg az e-mail címedet.');
+          this.router.navigate(['/login']);
         })
         .catch(error => {
-          alert(error.message);  // Hibakezelés
+          alert(error.message);
         });
     }
   }

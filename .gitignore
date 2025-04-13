@@ -1,18 +1,21 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# Compiled output
+# ============================
+# 🔧 Kompilált fájlok
+# ============================
 /dist
 /tmp
 /out-tsc
 /bazel-out
 
-# Node
+# ============================
+# 📦 Node.js modulok és naplók
+# ============================
 /node_modules
-npm-debug.log
-yarn-error.log
-pnpm-debug.log
+npm-debug.log*
+yarn-error.log*
 
-# IDEs and editors
+# ============================
+# 💻 IDE fájlok
+# ============================
 .idea/
 .project
 .classpath
@@ -20,32 +23,55 @@ pnpm-debug.log
 *.launch
 .settings/
 *.sublime-workspace
-
-# Visual Studio Code
+*.sublime-project
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+.history/
 
-# Miscellaneous
-/.angular/cache
+# ============================
+# ⚙️ Angular cache és build
+# ============================
+.angular/cache/
+.angular/config.json
 .sass-cache/
-/connect.lock
+.eslintcache
+*.tsbuildinfo
+.cache/
+
+# ============================
+# 🔐 Firebase és környezeti fájlok
+# ============================
+.firebase/
+firebase-debug.log
+firebase-debug.json
+firebase.json
+.firebaserc
+.env
+.env.local
+.env.development
+.env.production
+
+# ============================
+# 📁 Adatmock és tesztfájlok
+# ============================
+*.mock.json
+
+# ============================
+# 🧪 Teszteredmények
+# ============================
 /coverage
-/libpeerconnection.log
-testem.log
+/testem.log
+
+# ============================
+# 🗂️ Tipusdefiníciók
+# ============================
 /typings
 
-# System files
+# ============================
+# 🧾 Rendszerfájlok (OS szintű)
+# ============================
 .DS_Store
 Thumbs.db
-
-# Firebase and functions (optional if used)
-.firebase/
-functions/lib/
-functions/node_modules/
-
-# Environment files (Angular)
-src/environments/environment*.ts
