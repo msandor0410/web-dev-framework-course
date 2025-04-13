@@ -1,0 +1,24 @@
+<div *ngIf="survey" class="survey-detail-container">
+  <mat-card>
+    <mat-card-title>{{ survey.title }}</mat-card-title>
+    <mat-card-subtitle>{{ survey.description }}</mat-card-subtitle>
+    <mat-card-content>
+      <div class="tags" *ngIf="survey.tags?.length">
+        <span class="tag" *ngFor="let tag of survey.tags">{{ tag }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="questions.length > 0">
+    <h3>Kérdések</h3>
+    <mat-card *ngFor="let q of questions" class="question-card">
+      <mat-card-title>{{ q.text }}</mat-card-title>
+      <mat-card-content>
+        <p>Típus: {{ q.type }}</p>
+        <ul *ngIf="q.options?.length">
+          <li *ngFor="let opt of q.options">{{ opt }}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

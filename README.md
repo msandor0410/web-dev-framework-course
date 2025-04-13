@@ -1,55 +1,57 @@
-# KÉRDŐÍV SZERKESZTŐ ALKALMAZÁS (Survey Editor Application)
+# ✅ KÉRDŐÍV SZERKESZTŐ ALKALMAZÁS (Survey Editor Application)
 
-This is a CRUD web application developed as a project for the *Web Development Frameworks* course at the University of Szeged (SZTE).
+Ez a projekt az **SZTE Webfejlesztési keretrendszerek** kurzus keretében készült, Angular alapú kérdőív szerkesztő alkalmazás. A projekt az első mérföldkő követelményeinek teljesítését célozza.
 
-## 📚 Project Description
+## 🎯 Funkcionalitás (Első mérföldkő)
 
-The application allows users to create, edit, and view surveys and their questions. It demonstrates the use of Angular 19 (CLI 19.1.5), Angular Material, and TypeScript models, following modern component-based frontend architecture.
+- ✔️ Regisztráció és bejelentkezés Firebase használatával
+- ✔️ Kérdőívek létrehozása cím, leírás, kérdések és címkék (tag-ek) megadásával
+- ✔️ Kérdések típusának kezelése (text, checkbox, radio)
+- ✔️ Kérdőívek listázása, saját kérdőívek szűrése
+- ✔️ Kérdőív részletes megtekintése
+- ✔️ Saját `Pipe`: teljes név rövidítése
+- ✔️ Szülő-gyermek komponens kommunikáció (`@Input`, `@Output`)
+- ✔️ Angular formok használata (Reactive Forms)
+- ✔️ Angular Material komponensek (10+)
 
-## 🔧 Technologies Used
+## 🔧 Technológiák
 
-- Angular 19 (CLI version 19.1.5)
-- TypeScript
+- Angular 15+
 - Angular Material
+- Firebase (Auth, Firestore)
+- TypeScript
 - SCSS
-- Firebase (for hosting and optionally Firestore in later milestones)
-- Git + GitHub
 
-## 🧱 Core Features
+## 🧱 Adatmodellek
 
-- Create surveys with title and description
-- Display a list of created surveys
-- Responsive layout (mobile-first design)
-- Angular Material UI components
-- Custom data models and pipes
-- Communication between parent and child components via `@Input()` and `@Output()`
-- Form handling with Angular Forms
+- `User` – Felhasználó (név, email, UID)
+- `Survey` – Kérdőív
+- `Question` – Kérdés (külön kollekció)
+- `Tag` – Címke (egyszerű string listaként)
 
-## 📁 Project Structure
+## 📁 Projektstruktúra
 
-```bash
+```
 src/
 ├── app/
 │   ├── components/
 │   ├── models/
+│   ├── services/
 │   ├── pipes/
-│   ├── app.component.ts / html / scss
-│   └── app.module.ts
-└── styles.scss
+│   └── app.routes.ts
+└── environments/
 ```
 
-## 🚀 How to Run
+## 🚀 Indítás lokálisan
 
-1. Clone the repository
-2. Run `npm install`
-3. Run `ng serve`
-4. Open `http://localhost:4200/` in your browser
+1. `npm install`
+2. `ng serve -o`
 
-## 📡 Live Demo (Firebase Hosting)
+## 📡 Hosting
 
-> The live version will be available here after deployment.  
-> [-]
+Az alkalmazás a 2. mérföldkőre kerül publikálásra Firebase Hosting-ra.
 
-## 📄 License
+## 👨‍💻 Készítette
 
-This project is part of the university coursework and is intended for educational purposes only.
+Mikó Sándor (J9L8IC)  
+Kurzus: Webfejlesztési keretrendszerek, SZTE  

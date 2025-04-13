@@ -1,0 +1,16 @@
+[
+    {
+      "id": "1",
+      "title": "Frontend kérdőív",
+      "description": "Kérdések az Angular, React és Vue témakörökből.",
+      "creatorId": "dummyUser123",
+      "questions": []
+    },
+    {
+      "id": "2",
+      "title": "Backend kérdőív",
+      "description": "Kérdések Java, Node.js és Python technológiákról.",
+      "creatorId": "dummyUser456",
+      "questions": []
+    }
+  ]

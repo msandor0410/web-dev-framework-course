@@ -1,0 +1,24 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer mode="over" class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/survey-list" routerLinkActive="active">Kérdőívek</a>
+      <a mat-list-item routerLink="/new-survey" routerLinkActive="active">Új kérdőív</a>
+      <a mat-list-item routerLink="/profile" routerLinkActive="active">Profil</a>
+      <a mat-list-item routerLink="/register" routerLinkActive="active">Regisztráció</a>
+      <a mat-list-item (click)="logout()">Kijelentkezés</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Kérdőívszerkesztő</span>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,24 @@
+<div class="profile-container">
+  <mat-card class="profile-card">
+    <mat-card-title>Profil</mat-card-title>
+    <mat-card-content>
+      <p *ngIf="userData"><strong>Teljes név:</strong> {{ userData.fullName }}</p>
+      <p *ngIf="userData"><strong>Alias:</strong> {{ userData.fullName | nameShorten }}</p>
+      <p *ngIf="userData"><strong>Email:</strong> {{ userData.email }}</p>
+    </mat-card-content>
+  </mat-card>
+  
+
+  <div class="my-surveys">
+    <div class="survey-header">
+      <h3>Saját kérdőíveid</h3>
+    </div>
+
+    <div class="survey-grid">
+      <mat-card *ngFor="let survey of surveys | ownSurvey:currentUid" class="survey-card">
+        <mat-card-title>{{ survey.title }}</mat-card-title>
+        <mat-card-subtitle>{{ survey.description }}</mat-card-subtitle>
+      </mat-card>
+    </div>
+  </div>
+</div>

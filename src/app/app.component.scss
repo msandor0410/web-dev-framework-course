@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .page-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-top: 64px; // ez a navbar magassága
+  }

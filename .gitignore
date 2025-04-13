@@ -1,53 +1,51 @@
-# == ANGULAR OUTPUT ==
-dist/
-.out-tsc/
-.angular/cache/
-coverage/
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# == NODE MODULES ==
-node_modules/
-npm-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
 
-# == ENVIRONMENT FILES ==
-.env
-.env.*.local
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
 
-# == LOGS ==
-logs/
-*.log
-
-# == VSCODE / IDEK ==
-.vscode/
+# IDEs and editors
 .idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
 *.sublime-workspace
-*.sublime-project
 
-# == TEST / CACHE ==
-testem.log
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
 .sass-cache/
-.cache/
-.nyc_output/
-.typings
-*.tsbuildinfo
-.history/
-bower_components/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
 
-# == OS FÁJLOK ==
+# System files
 .DS_Store
 Thumbs.db
 
-# == EGYÉB BUILD MARADVÁNYOK ==
-lib-cov
-build/Release
-*.pid
-*.seed
-*.pid.lock
-.lock-wscript
+# Firebase and functions (optional if used)
+.firebase/
+functions/lib/
+functions/node_modules/
 
-# == GIT TOOLING ==
-.yarn-integrity
-.yarn/cache
-.yarn/unplugged
-.pnp.*
+# Environment files (Angular)
+src/environments/environment*.ts

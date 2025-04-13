@@ -1,0 +1,30 @@
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <mat-card-title>Belépés</mat-card-title>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required />
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+          Email megadása kötelező!
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+          Érvényes email címet adj meg!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Jelszó</mat-label>
+        <input matInput type="password" formControlName="password" required />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Jelszó megadása kötelező!
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+        Belépés
+      </button>
+    </form>
+  </mat-card>
+</div>

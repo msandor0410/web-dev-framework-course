@@ -1,0 +1,7 @@
+<ng-container *ngIf="surveys$ | async as surveys">
+  <app-survey-card
+    *ngFor="let survey of surveys; trackBy: trackByFn"
+    [survey]="survey"
+    (select)="onSurveySelected(survey)">
+  </app-survey-card>
+</ng-container>

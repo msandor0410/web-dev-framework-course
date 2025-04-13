@@ -1,0 +1,28 @@
+.my-surveys {
+  margin-top: 24px;
+}
+
+.survey-header {
+  margin-bottom: 16px;
+}
+
+.survey-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.survey-card {
+  flex: 1 1 calc(50% - 16px);
+  min-width: 280px;
+}
+
+.profile-container {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .my-surveys {
+    grid-template-columns: 1fr 1fr;
+  }
+}

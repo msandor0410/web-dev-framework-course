@@ -1,0 +1,54 @@
+<div class="survey-form-container">
+  <mat-card class="survey-card">
+    <mat-card-title>Új kérdőív létrehozása</mat-card-title>
+    <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Cím</mat-label>
+        <input matInput formControlName="title" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Leírás</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <div class="section">
+        <h4>Kérdések</h4>
+        <mat-form-field class="form-field">
+          <mat-label>Új kérdés</mat-label>
+          <input matInput [formControl]="questionControl" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addQuestion()" type="button">Hozzáadás</button>
+
+        <ul class="list">
+          <li *ngFor="let q of questions; let i = index">
+            {{ q.text }}
+            <button mat-button color="warn" (click)="removeQuestion(i)" type="button">❌</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h4>Címkék</h4>
+        <mat-form-field class="form-field">
+          <mat-label>Új címke</mat-label>
+          <input matInput [formControl]="tagControl" />
+        </mat-form-field>
+        <button mat-raised-button color="accent" (click)="addTag()" type="button">Címke hozzáadása</button>
+
+        <div class="tag-list">
+          <span class="tag" *ngFor="let tag of tags; let i = index">
+            {{ tag }}
+            <button mat-icon-button color="warn" (click)="removeTag(i)" type="button">
+              ✕
+            </button>
+          </span>
+        </div>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="surveyForm.invalid">
+        Mentés
+      </button>
+    </form>
+  </mat-card>
+</div>
