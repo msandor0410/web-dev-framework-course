@@ -46,6 +46,3 @@ Thumbs.db
 .firebase/
 functions/lib/
 functions/node_modules/
-
-# Environment files (Angular)
-src/environments/environment*.ts
