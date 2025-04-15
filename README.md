@@ -2,6 +2,21 @@
 
 Ez a projekt az **SZTE Webfejlesztési keretrendszerek** kurzus keretében készült. Egy Angular + Firebase alapú kérdőív-szerkesztő alkalmazás, amely teljesíti az első mérföldkő összes követelményét, továbbá opcionális biztonsági funkciókat is tartalmaz.
 
+FONTOS: AZ ELŐBB VETTEM ÉSZRE ROSSZ API KULCSAL LETT FELTÖLTVE AZ SRC/ENVIRONMENTS/ENVIRONMENT.TS TARTALMÁT ERRE CSERÉLJÜK KI LOCÁLIS TESZTELÉSHEZ:
+
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyAREpT2PtB8F8bCKoYRfSbyJC2hVeWI8rs",
+    authDomain: "survey-app-25.firebaseapp.com",
+    projectId: "survey-app-25",
+    storageBucket: "survey-app-25.firebasestorage.app",
+    messagingSenderId: "300744821539",
+    appId: "1:300744821539:web:22a01936f92e161e839a96",
+    measurementId: "G-LFWFQQLSFK"
+  }
+};
+
 ## 🎯 Funkcionalitás (1. mérföldkő + bővítések)
 
 - ✔️ Regisztráció Firebase Auth használatával (email + jelszó, teljes név mentése)
