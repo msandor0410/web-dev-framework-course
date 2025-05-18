@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { UserFormComponent } from '../user-form/user-form.component';
 
 @Component({
   selector: 'app-register',
@@ -17,13 +18,21 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    UserFormComponent
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+
+  fullName: string = '';
+
+  onNameChanged(newName: string): void {
+    this.fullName = newName;
+    this.registerForm.get('fullName')?.setValue(newName);
+  }
 
   constructor(
     private fb: FormBuilder,

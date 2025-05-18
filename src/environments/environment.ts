@@ -1,13 +1,12 @@
 export const environment = {
-    production: false,
-    firebaseConfig: {
-      apiKey: "AIzaSyAoH2abcDty0WYbE-JCLxQ-eS2JTJLqwgI",
-      authDomain: "survey-app-62d29.firebaseapp.com",
-      projectId: "survey-app-62d29",
-      storageBucket: "survey-app-62d29.firebasestorage.app",
-      messagingSenderId: "305467030963",
-      appId: "1:305467030963:web:4fe745497a76443a51dfc6",
-      measurementId: "G-HQES41CBEG"
-    }
-  };
-  
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyDxD0eeXMyN5bDBpX7137BJpwq8MpTZUro",
+    authDomain: "survey-app-25-02.firebaseapp.com",
+    projectId: "survey-app-25-02",
+    storageBucket: "survey-app-25-02.firebasestorage.app",
+    messagingSenderId: "431588676989",
+    appId: "1:431588676989:web:e1bb7a2cd04c91ab33a814",
+    measurementId: "G-SPTSTHFPJT"
+  }
+};

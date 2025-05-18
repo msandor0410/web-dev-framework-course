@@ -28,4 +28,45 @@
       padding: 0.5rem;
     }
   }
+
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+  
+    button {
+      min-width: 120px;
+      border-radius: 12px !important; // ✅ legyen kerekített
+      padding: 8px 24px;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      transition: transform 0.15s ease-in-out;
+  
+      &:hover {
+        transform: translateY(-1px);
+      }
+    }
+  
+    .page-indicator {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+
+  .pagination-button {
+    min-width: 120px;
+    border-radius: 12px;
+    padding: 8px 24px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: transform 0.15s ease-in-out;
+  
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+  
+  
   

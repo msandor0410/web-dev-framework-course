@@ -13,9 +13,18 @@ import { NameShortenPipe } from '../../pipes/name-shorten.pipe';
 })
 export class SurveyCardComponent {
   @Input() survey!: Survey & { creatorName: string };
+
+  @Input() showAuthorName: boolean = true;
+
   @Output() select = new EventEmitter<Survey>();
+  
+  @Output() deleteSurvey = new EventEmitter<string>();
 
   onClick(): void {
     this.select.emit(this.survey);
+  }
+
+  onDelete(): void {
+    this.deleteSurvey.emit(this.survey.id);
   }
 }

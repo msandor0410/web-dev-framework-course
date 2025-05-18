@@ -3,13 +3,16 @@
     <mat-card-title>Regisztráció</mat-card-title>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
 
-      <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Teljes név</mat-label>
-        <input matInput formControlName="fullName" required />
+      <div class="form-field">
+        <app-user-form
+          [fullName]="fullName"
+          (nameChanged)="onNameChanged($event)">
+        </app-user-form>
+      
         <mat-error *ngIf="registerForm.get('fullName')?.hasError('required')">
           Teljes név megadása kötelező!
         </mat-error>
-      </mat-form-field>   
+      </div>
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Email</mat-label>

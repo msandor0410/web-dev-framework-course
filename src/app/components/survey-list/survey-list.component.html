@@ -1,7 +1,35 @@
-<ng-container *ngIf="surveys$ | async as surveys">
+<div class="survey-list">
+
+  <div class="text-right mb-3, switch-mode-btn">
+    <button mat-raised-button color="accent" class="pagination-button" (click)="switchMode()"> 
+      Váltás: {{ mode === 'all' ? 'Lapozható mód' : 'Összes betöltése' }}
+    </button>
+  </div>
+
   <app-survey-card
     *ngFor="let survey of surveys; trackBy: trackByFn"
     [survey]="survey"
-    (select)="onSurveySelected(survey)">
+    (select)="onSurveySelected(survey)"
+    (deleteSurvey)="onDeleteSurvey(survey.id)">
   </app-survey-card>
-</ng-container>
+
+  <div *ngIf="mode === 'paged'" class="pagination-controls">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="previousPage()"
+      [disabled]="currentPageIndex <= 1 || isLoading">
+      ⬅ Előző
+    </button>
+
+    <span class="page-indicator">Oldal: {{ currentPageIndex }}</span>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="nextPage()"
+      [disabled]="isLastPage || isLoading">
+      Következő ➡
+    </button>
+  </div>
+</div>

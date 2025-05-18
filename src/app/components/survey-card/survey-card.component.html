@@ -1,10 +1,26 @@
-<mat-card (click)="onClick()" class="survey-card">
-  <mat-card-title>{{ survey.title }}</mat-card-title>
-  <mat-card-subtitle>Készítette: {{ survey.creatorName | nameShorten }}</mat-card-subtitle>
-  <mat-card-content>
+<mat-card class="survey-card">
+  <mat-card-title (click)="onClick()">
+    {{ survey.title }}
+  </mat-card-title>
+
+  <mat-card-subtitle *ngIf="showAuthorName">
+    Készítette: {{ survey.creatorName | nameShorten }}
+  </mat-card-subtitle>
+
+  <mat-card-content (click)="onClick()">
     <p>{{ survey.description }}</p>
     <div class="tags" *ngIf="survey.tags?.length">
       <span class="tag" *ngFor="let tag of survey.tags">{{ tag }}</span>
     </div>
   </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="warn"
+      class="pagination-button"
+      (click)="onDelete()">
+      Törlés
+    </button>
+  </mat-card-actions>
 </mat-card>
